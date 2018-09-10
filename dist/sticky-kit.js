@@ -151,7 +151,7 @@
               }).trigger("sticky_kit:unbottom");
             }
           }
-          if (scroll < top) {
+          if (scroll <= top) {
             fixed = false;
             offset = offset_top;
             if (manual_spacer == null) {
