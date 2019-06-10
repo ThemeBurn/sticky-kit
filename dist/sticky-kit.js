@@ -10,13 +10,14 @@ win = $(window);
 doc = $(document);
 
 $.fn.stick_in_parent = function(opts = {}) {
-  var doc_height, elm, enable_bottoming, i, inner_scrolling, len, manual_spacer, offset_top, outer_width, parent_selector, recalc_every, ref, sticky_class, win_height;
+  var doc_height, elm, enable_bottoming, i, inner_scrolling, len, manual_spacer, offset_top, stick_after, outer_width, parent_selector, recalc_every, ref, sticky_class, win_height;
   ({
     sticky_class,
     inner_scrolling,
     recalc_every,
     parent: parent_selector,
     offset_top,
+    stick_after: stick_after,
     spacer: manual_spacer,
     bottoming: enable_bottoming
   } = opts);
@@ -24,6 +25,9 @@ $.fn.stick_in_parent = function(opts = {}) {
   doc_height = doc.height();
   if (offset_top == null) {
     offset_top = 0;
+  }
+  if (stick_after == null) {
+      stick_after = false;
   }
   if (parent_selector == null) {
     parent_selector = void 0;
@@ -105,6 +109,9 @@ $.fn.stick_in_parent = function(opts = {}) {
         }
         top = elm.offset().top - (parseInt(elm.css("margin-top"), 10) || 0) - offset_top;
         height = elm.outerHeight(true);
+        if (stick_after) {
+            top += height;
+        }
         el_float = elm.css("float");
         if (spacer) {
           spacer.css({
