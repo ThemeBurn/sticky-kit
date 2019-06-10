@@ -1,3 +1,7 @@
 .tup
+# Dependency directories
 node_modules
 spec/*.js
+
+# User-specific stuff
+.idea
