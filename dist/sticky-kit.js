@@ -121,7 +121,11 @@ $.fn.stick_in_parent = function (opts) {
                 top = elm.offset().top - (parseInt(elm.css("margin-top"), 10) || 0) - offset_top;
                 height = elm.outerHeight(true);
                 if (stick_after) {
-                    top += height;
+                    if (isNaN(stick_after)) {
+                        top += height;
+                    } else {
+                        top += stick_after;
+                    }
                 }
                 el_float = elm.css("float");
                 if (spacer) {
