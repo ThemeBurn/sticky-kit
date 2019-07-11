@@ -121,6 +121,8 @@ $.fn.stick_in_parent = function (opts) {
                 top = elm.offset().top - (parseInt(elm.css("margin-top"), 10) || 0) - offset_top;
                 height = elm.outerHeight(true);
                 if (stick_after) {
+                    stick_after = parseInt(stick_after);
+
                     if (isNaN(stick_after)) {
                         top += height;
                     } else {
